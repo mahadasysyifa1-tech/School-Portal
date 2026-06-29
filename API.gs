@@ -2,55 +2,68 @@
 // API
 //==================================================
 
-function api(request) {
+/**
+ * Bootstrap the application.
+ *
+ * Loads all data required by the frontend.
+ *
+ * @returns {Object}
+ */
+function bootstrap() {
+
   const debug = new Debug();
+
   try {
+
     const data = new Data(debug);
-    let result;
-    switch (request.action) {
 
-      case "ping":
-        result = {
-          status: "OK",
-          timestamp: new Date()
-        };
-        break;
-
-      case "eventLog":
-        result = data.eventLog();
-        break;
-
-      case "silabus":
-        result = data.silabus();
-        break;
-
-      case "mapel":
-        result = data.mapel();
-        break;
-
-      default:
-        throw new Error(
-          `Unknown action "${request.action}"`
-        );
-    }
+    const result = data.bootstrap();
 
     debug.finish();
+
     return {
+
       success: true,
+
       data: result,
+
       debug: debug.export()
+
     };
+
   }
 
   catch (err) {
+
     debug.error(err);
+
     debug.finish();
 
     return {
+
       success: false,
+
       error: err.toString(),
+
       debug: debug.export()
+
     };
+
   }
+
+}
+
+
+//==================================================
+// TEST
+//==================================================
+
+function testBootstrap() {
+
+  const result = bootstrap();
+
+  Logger.log(
+    JSON.stringify(result, null, 2)
+  );
 
 }

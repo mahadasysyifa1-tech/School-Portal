@@ -2,11 +2,11 @@
 
 ## Foundation
 
-- [ ] Config
-- [ ] Debug
-- [ ] Utils
-- [ ] Data
-- [ ] API
+- [v] Config
+- [v] Debug
+- [v] Utils
+- [v] Data
+- [v] API
 
 ## Frontend
 

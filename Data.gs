@@ -38,7 +38,6 @@ class Data {
   //================================================
 
   silabus() {
-
     this.debug.info("Loading Silabus...");
 
     const values = getSheet(
@@ -58,7 +57,6 @@ class Data {
   //================================================
 
   mapel() {
-
     this.debug.info("Loading Data Mapel...");
 
     const values = getSheet(
@@ -71,6 +69,21 @@ class Data {
 
     return values;
 
+  }
+
+  //================================================
+  // Bootstrap
+  //================================================
+
+  bootstrap() {
+    this.debug.info("Bootstrapping application...");
+    return {
+      version: "0.1.0",
+      generated: new Date(),
+      eventLog: this.eventLog(),
+      silabus: this.silabus(),
+      mapel: this.mapel()
+    };
   }
 
 }
